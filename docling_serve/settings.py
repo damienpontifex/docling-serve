@@ -1,7 +1,7 @@
 import enum
 import sys
 from pathlib import Path
-from typing import Optional, Union
+from typing import Union
 
 from pydantic import AnyUrl, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -19,9 +19,9 @@ class UvicornSettings(BaseSettings):
     root_path: str = ""
     proxy_headers: bool = True
     timeout_keep_alive: int = 60
-    ssl_certfile: Optional[Path] = None
-    ssl_keyfile: Optional[Path] = None
-    ssl_keyfile_password: Optional[str] = None
+    ssl_certfile: Path | None = None
+    ssl_keyfile: Path | None = None
+    ssl_keyfile_password: str | None = None
     workers: Union[int, None] = None
 
 
@@ -41,9 +41,9 @@ class DoclingServeSettings(BaseSettings):
 
     enable_ui: bool = False
     api_host: str = "localhost"
-    artifacts_path: Optional[Path] = None
-    static_path: Optional[Path] = None
-    scratch_path: Optional[Path] = None
+    artifacts_path: Path | None = None
+    static_path: Path | None = None
+    scratch_path: Path | None = None
     single_use_results: bool = True
     result_removal_delay: float = 300  # 5 minutes
     load_models_at_boot: bool = True
@@ -72,12 +72,12 @@ class DoclingServeSettings(BaseSettings):
     eng_rq_results_prefix: str = "docling:results"
     eng_rq_sub_channel: str = "docling:updates"
     # KFP engine
-    eng_kfp_endpoint: Optional[AnyUrl] = None
-    eng_kfp_token: Optional[str] = None
-    eng_kfp_ca_cert_path: Optional[str] = None
-    eng_kfp_self_callback_endpoint: Optional[str] = None
-    eng_kfp_self_callback_token_path: Optional[Path] = None
-    eng_kfp_self_callback_ca_cert_path: Optional[Path] = None
+    eng_kfp_endpoint: AnyUrl | None = None
+    eng_kfp_token: str | None = None
+    eng_kfp_ca_cert_path: str | None = None
+    eng_kfp_self_callback_endpoint: str | None = None
+    eng_kfp_self_callback_token_path: Path | None = None
+    eng_kfp_self_callback_ca_cert_path: Path | None = None
 
     eng_kfp_experimental: bool = False
 

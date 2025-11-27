@@ -4,7 +4,7 @@ import platform
 import sys
 import warnings
 from pathlib import Path
-from typing import Annotated, Any, Optional, Union
+from typing import Annotated, Any, Union
 
 import typer
 import uvicorn
@@ -205,17 +205,17 @@ def dev(
         int, typer.Option(help="Timeout for the server response.")
     ] = uvicorn_settings.timeout_keep_alive,
     ssl_certfile: Annotated[
-        Optional[Path], typer.Option(help="SSL certificate file")
+        Path | None, typer.Option(help="SSL certificate file")
     ] = uvicorn_settings.ssl_certfile,
     ssl_keyfile: Annotated[
-        Optional[Path], typer.Option(help="SSL key file")
+        Path | None, typer.Option(help="SSL key file")
     ] = uvicorn_settings.ssl_keyfile,
     ssl_keyfile_password: Annotated[
-        Optional[str], typer.Option(help="SSL keyfile password")
+        str | None, typer.Option(help="SSL keyfile password")
     ] = uvicorn_settings.ssl_keyfile_password,
     # docling options
     artifacts_path: Annotated[
-        Optional[Path],
+        Path | None,
         typer.Option(
             help=(
                 "If set to a valid directory, "
@@ -312,17 +312,17 @@ def run(
         int, typer.Option(help="Timeout for the server response.")
     ] = uvicorn_settings.timeout_keep_alive,
     ssl_certfile: Annotated[
-        Optional[Path], typer.Option(help="SSL certificate file")
+        Path | None, typer.Option(help="SSL certificate file")
     ] = uvicorn_settings.ssl_certfile,
     ssl_keyfile: Annotated[
-        Optional[Path], typer.Option(help="SSL key file")
+        Path | None, typer.Option(help="SSL key file")
     ] = uvicorn_settings.ssl_keyfile,
     ssl_keyfile_password: Annotated[
-        Optional[str], typer.Option(help="SSL keyfile password")
+        str | None, typer.Option(help="SSL keyfile password")
     ] = uvicorn_settings.ssl_keyfile_password,
     # docling options
     artifacts_path: Annotated[
-        Optional[Path],
+        Path | None,
         typer.Option(
             help=(
                 "If set to a valid directory, "
