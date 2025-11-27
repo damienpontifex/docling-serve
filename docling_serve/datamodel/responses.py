@@ -1,5 +1,4 @@
 import enum
-from typing import Optional
 
 from pydantic import BaseModel
 
@@ -40,8 +39,8 @@ class ConvertDocumentErrorResponse(BaseModel):
 class TaskStatusResponse(BaseModel):
     task_id: str
     task_status: str
-    task_position: Optional[int] = None
-    task_meta: Optional[TaskProcessingMeta] = None
+    task_position: int | None = None
+    task_meta: TaskProcessingMeta | None = None
 
 
 class MessageKind(str, enum.Enum):
@@ -52,5 +51,5 @@ class MessageKind(str, enum.Enum):
 
 class WebsocketMessage(BaseModel):
     message: MessageKind
-    task: Optional[TaskStatusResponse] = None
-    error: Optional[str] = None
+    task: TaskStatusResponse | None = None
+    error: str | None = None

@@ -7,7 +7,6 @@ import ssl
 import tempfile
 import time
 from pathlib import Path
-from typing import Optional
 
 import certifi
 import gradio as gr
@@ -208,7 +207,7 @@ def clear_file_input():
 
 def auto_set_return_as_file(
     url_input_value: str,
-    file_input_value: Optional[list[str]],
+    file_input_value: list[str] | None,
     image_export_mode_value: str,
 ):
     # If more than one input source is provided, return as file
